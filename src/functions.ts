@@ -8,6 +8,6 @@ export function handleAddToCart(clickedItem: CartItemType) {
     return null
 };
 
-export function handleRemoveFromCart() {
-
+export function handleRemoveFromCart(id: number) {
+    return id
 }

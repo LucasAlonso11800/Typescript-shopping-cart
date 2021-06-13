@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Drawer, LinearProgress, Grid, Badge } from '@material-ui/core';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Item from './Item/Item';
+import Cart from './Cart/Cart';
 // Styles
 import './App.css'
 import { Wrapper, StyledButton } from './App.styles';
@@ -35,7 +36,7 @@ function App() {
     return (
         <Wrapper>
             <Drawer anchor='right' open={cartIsOpen} onClose={() => setCartIsOpen(false)}>
-                Cart
+                <Cart cartItems={items} />
             </Drawer>
             <StyledButton onClick={() => setCartIsOpen(true)}>
                 <Badge color='error' badgeContent={getTotalItems(items)}>
