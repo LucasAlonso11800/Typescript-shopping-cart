@@ -6,7 +6,7 @@ import { Wrapper, CartTitle } from './Cart.styles';
 // Types
 import { CartItemType } from '../Types';
 // Functions
-import { handleAddToCart, handleRemoveFromCart } from '../functions';
+import { calculateTotal } from '../functions';
 
 type Props = { cartItems: CartItemType[] }
 
@@ -18,6 +18,7 @@ const Cart: React.FC<Props> = ({ cartItems }) => {
             {cartItems.map(item => {
                 return <CartItem key={item.id} item={item}/>
             })}
+            <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
         </Wrapper>
     )
 };

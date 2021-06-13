@@ -28,3 +28,9 @@ export function handleRemoveFromCart(id: number, setItems: Function) {
         return [...acc, { ...item, amount: item.amount - 1 }]
     }, [] as CartItemType[]))
 };
+
+export function calculateTotal(items: CartItemType[]){
+    return items.reduce((acc: number, item) => {
+        return acc + item.amount * item.price
+    }, 0)
+};

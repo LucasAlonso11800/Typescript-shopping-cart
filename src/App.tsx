@@ -9,7 +9,7 @@ import Cart from './Cart/Cart';
 import './App.css'
 import { Wrapper, StyledButton } from './App.styles';
 // Functions
-import { getTotalItems, handleAddToCart, handleRemoveFromCart } from './functions';
+import { getTotalItems } from './functions';
 // Types
 import { CartItemType } from './Types';
 // Recoil
