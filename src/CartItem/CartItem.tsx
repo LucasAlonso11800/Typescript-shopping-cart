@@ -8,13 +8,13 @@ import { CartItemType } from '../Types';
 // Functions
 import { handleAddToCart, handleRemoveFromCart } from '../functions';
 // Recoil
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { cartItems } from '../RecoilState';
 
 type Props = { item: CartItemType }
 
 const CartItem: React.FC<Props> = ({ item }) => {
-    const [items, setItems] = useRecoilState(cartItems);
+    const setItems = useSetRecoilState(cartItems);
 
     return (
         <Wrapper>
