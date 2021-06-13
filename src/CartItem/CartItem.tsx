@@ -2,36 +2,41 @@ import React from 'react';
 // Components
 import { Button } from '@material-ui/core';
 // Styles
-import { Wrapper } from './CartItem.styles';
+import { Wrapper, ItemTitle, ItemInfo, Buttons, Img } from './CartItem.styles';
 // Types
 import { CartItemType } from '../Types';
 // Functions
 import { handleAddToCart, handleRemoveFromCart } from '../functions';
+// Recoil
+import { useRecoilState } from 'recoil';
+import { cartItems } from '../RecoilState';
 
 type Props = { item: CartItemType }
 
 const CartItem: React.FC<Props> = ({ item }) => {
+    const [items, setItems] = useRecoilState(cartItems);
+
     return (
         <Wrapper>
             <div>
-                <h3>{item.title}</h3>
-                <div>
+                <ItemTitle>{item.title}</ItemTitle>
+                <ItemInfo>
                     <p>Price: ${item.price}</p>
                     <p>Total: ${(item.amount * item.price).toFixed(2)}</p>
-                </div>
-                <div>
+                </ItemInfo>
+                <Buttons>
                     <Button size="small" 
                     disableElevation 
                     variant="contained" 
-                    onClick={() => handleRemoveFromCart(item.id)}>-</Button>
+                    onClick={() => handleRemoveFromCart(item.id, setItems)}>-</Button>
                     <p>{item.amount}</p>
                     <Button size="small" 
                     disableElevation 
                     variant="contained" 
-                    onClick={() => handleAddToCart(item)}>+</Button>
-                </div>
+                    onClick={() => handleAddToCart(item, setItems)}>+</Button>
+                </Buttons>
             </div>
-            <img src={item.image} alt={item.title} />
+            <Img src={item.image} alt={item.title} />
         </Wrapper>
     )
 };
